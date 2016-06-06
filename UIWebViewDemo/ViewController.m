@@ -65,6 +65,28 @@
     // Dispose of any resources that can be recreated.
 }
 
+/*json解析*/
+- (nullable id)parserWithJsonString:(NSString *)jsonString {
+    
+    if (jsonString == nil) {
+        return nil;
+    }
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    id json = [NSJSONSerialization JSONObjectWithData:jsonData
+                                              options:NSJSONReadingMutableContainers
+                                                error:&err];
+    
+    if(err) {
+        NSLog(@"json解析失败--------%@",err);
+        return nil;
+    }
+    
+    return json;
+}
+
+
 -(UIWebView *)webView{
     if (_webView == nil) {
         CGRect frame = CGRectMake(0, self.statusFrame.size.height, self.width, self.height-self.statusFrame.size.height);
