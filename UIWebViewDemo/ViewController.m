@@ -32,15 +32,17 @@
     [self.view addSubview:self.webView];
     self.webView.backgroundColor = [UIColor whiteColor];
     
-    NSString*path =[[NSBundle mainBundle]pathForResource:@"index" ofType:@"html"];
-    NSString*htmlString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    [self.webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:path]];//(1)
-    
-    
-    //NSURL*url=[NSURL fileURLWithPath:path];//创建URL
-    NSURL* url = [NSURL URLWithString:@"https://www.baidu.com"];
-    NSURLRequest*request=[NSURLRequest requestWithURL:url];//创建NSURLRequest
+//    NSString*path =[[NSBundle mainBundle]pathForResource:@"index" ofType:@"html"];
+//    NSString*htmlString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+//    [self.webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:path]];//(1)
+//    
+//    
+//    //NSURL*url=[NSURL fileURLWithPath:path];//创建URL
+//    NSURL* url = [NSURL URLWithString:@"https://www.baidu.com"];
+//    NSURLRequest*request=[NSURLRequest requestWithURL:url];//创建NSURLRequest
     //[self.webView loadRequest:request];//加载(2)
+    
+     [self.webView loadHTMLString:@"<input type=\"file\" accept=\"image/*;capture=camera\">" baseURL:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
